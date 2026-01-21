@@ -1,0 +1,30 @@
+Индикатор пикового значения. Плавно вращая ручку потенциометра добейтесь зажигания встроенного светодиода при значении 520 (Измените скетч для сигнализации падения напряжения ниже установленного уровня)
+Код:
+//1
+void setup() {
+  Serial.begin(19200);
+  pinMode (22, OUTPUT);
+}
+
+void loop() {
+  Serial.println(analogRead(15));
+  if (analogRead(15)>=520){
+    digitalWrite (22, HIGH);
+  }
+  else{
+    digitalWrite (22, LOW);
+  }
+}
+//2
+void setup() {
+  Serial.begin(19200);
+  pinMode (22, OUTPUT);
+}
+void loop() {
+  Serial.println(analogRead(15));
+  if (analogRead(15)<=520){
+    digitalWrite (22, HIGH);
+  }
+  else{
+    digitalWrite (22, LOW);
+  }
