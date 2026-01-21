@@ -1,0 +1,26 @@
+Одно нажатие на кнопку включает светодиод, другое отключает
+Код:
+const int buttonPin = 34; // Пин, к которому подключена кнопка
+const int ledPin = 13;    // Пин, к которому подключен светодиод
+
+int buttonState = 0; // Переменная для хранения состояния кнопки
+
+void setup() {
+  pinMode(buttonPin, INPUT); 
+  
+  // Настраиваем пин светодиода как выход
+  pinMode(ledPin, OUTPUT); 
+}
+
+void loop() {
+  // Считываем состояние кнопки
+  buttonState = digitalRead(buttonPin);
+
+  if (buttonState == LOW) {
+    // Если кнопка нажата, включаем светодиод
+    digitalWrite(ledPin, LOW); 
+  } else {
+    // Если кнопка не нажата, выключаем светодиод
+    digitalWrite(ledPin, HIGH); 
+  }
+}
