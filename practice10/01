@@ -1,0 +1,44 @@
+Подключиться к Wi-Fi сети с ранее заданными параметрами, получить IP, вывести данные о подключении в последовательный порт компьютера IP адрес устройства, маску подсети, шлюз по умолчанию и адрес DNS сервера
+Код:
+#include <WiFi.h>
+
+const char* ssid = "egvee";        
+const char* password = "qwezxc666"; 
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+  
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+  
+  WiFi.begin(ssid, password);
+
+  int retries = 0;
+  const int maxRetries = 30;
+  
+  while (WiFi.status() != WL_CONNECTED && retries < maxRetries) {
+    delay(500);
+    Serial.print(".");
+    retries++;
+  }
+  Serial.println();
+
+  if (WiFi.status() == WL_CONNECTED) {
+    Serial.println("WiFi connected!");
+    
+    Serial.print("IP address: ");
+    Serial.println(WiFi.localIP());
+    
+    Serial.print("Subnet mask: ");
+    Serial.println(WiFi.subnetMask());
+    
+    Serial.print("Gateway IP: ");
+    Serial.println(WiFi.gatewayIP());
+    
+    Serial.print("DNS server: ");
+    Serial.println(WiFi.dnsIP());
+  } else {
+    Serial.println("Failed to connect to WiFi");
+  }
+}
