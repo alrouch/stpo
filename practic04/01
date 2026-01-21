@@ -1,0 +1,21 @@
+Реализуйте эффект пульсации, при котором светодиод будет постепенно увеличивать и уменьшать частоту вспышек, имитируя «пульс».
+Код:
+const int ledPin = 13; // пин светодиода
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop() {
+  // быстрое моргание
+  digitalWrite(ledPin, HIGH);
+  delay(200);
+  digitalWrite(ledPin, LOW);
+  delay(200);
+
+  // медленное моргание
+  digitalWrite(ledPin, HIGH);
+  delay(1000);
+  digitalWrite(ledPin, LOW);
+  delay(1000);
+}
